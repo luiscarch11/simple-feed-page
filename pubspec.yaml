@@ -1,0 +1,37 @@
+name: events_feed
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  analyzer: ^1.4.0
+  
+  cloud_firestore: ^1.0.7
+  cupertino_icons: ^1.0.2
+  dartz: ^0.10.0-nullsafety.1
+  equatable: ^2.0.0
+  firebase_core: ^1.1.0
+  flutter_riverpod: ^0.14.0+1
+  google_maps_flutter: ^2.0.3
+  intl:
+  location: ^4.1.1
+  
+  rxdart: ^0.26.0
+  syncfusion_flutter_datepicker: ^19.1.58-beta
+  uuid: ^3.0.4
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: ^5.0.7
+  build_runner: ^2.0.2
+  
+
+flutter:
+  uses-material-design: true
+

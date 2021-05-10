@@ -1,0 +1,22 @@
+analyzer:
+  strong-mode:
+    implicit-casts: true
+    implicit-dynamic: true
+  errors:
+    missing_required_param: error
+    missing_return: error
+    parameter_assignments: error
+    unused_import: error
+    dead_code: error
+  
+
+linter:
+  rules:
+    sort_constructors_first: true
+    prefer_single_quotes: true
+    prefer_relative_imports: true
+    public_member_api_docs: false
+    one_member_abstracts: false
+    dead_code: error
+  
+
