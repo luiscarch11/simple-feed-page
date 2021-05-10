@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -19,7 +20,7 @@ class MapSelectorNotifier extends StateNotifier<MapSelectorState> {
 
     locationOrFailure.fold(
       (l) => state = state.copyWith(
-        userLocationFailure: l,
+        userLocationFailure: right(l),
         loading: false,
       ),
       (r) {
@@ -33,6 +34,12 @@ class MapSelectorNotifier extends StateNotifier<MapSelectorState> {
           ),
         );
       },
+    );
+  }
+
+  void cleanError() {
+    state = state.copyWith(
+      userLocationFailure: left(unit),
     );
   }
 

@@ -20,7 +20,6 @@ class _FeedPageState extends State<FeedPage> {
     context
         .read(feedPageNotifierProvider.notifier)
         .init(context.read(authNotifierProvider.notifier).currentUser!);
-    super.initState();
     _controller.addListener(
       () {
         if (_controller.position.pixels >=
@@ -30,6 +29,7 @@ class _FeedPageState extends State<FeedPage> {
         }
       },
     );
+    super.initState();
   }
 
   @override
@@ -45,34 +45,8 @@ class _FeedPageState extends State<FeedPage> {
       builder: (context, watch, _) {
         final state = watch(feedPageNotifierProvider);
         return Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                  ),
-                ),
-                isScrollControlled: true,
-                builder: (context) => AddContentFormWidget(
-                  onCreated: (id) {
-                    context
-                        .read(feedPageNotifierProvider.notifier)
-                        .addNewPostToFeed(id);
-                    _controller.animateTo(
-                      0,
-                      duration: const Duration(
-                        milliseconds: 400,
-                      ),
-                      curve: Curves.linear,
-                    );
-                  },
-                ),
-              );
-            },
-            child: Icon(Icons.add),
-          ),
+          floatingActionButton:
+              _AddContentFloatingActionButton(controller: _controller),
           body: SingleChildScrollView(
             controller: _controller,
             physics: BouncingScrollPhysics(),
@@ -128,6 +102,48 @@ class _FeedPageState extends State<FeedPage> {
           ),
         );
       },
+    );
+  }
+}
+
+class _AddContentFloatingActionButton extends StatelessWidget {
+  const _AddContentFloatingActionButton({
+    Key? key,
+    required ScrollController controller,
+  })   : _controller = controller,
+        super(key: key);
+
+  final ScrollController _controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(20),
+            ),
+          ),
+          isScrollControlled: true,
+          builder: (context) => AddContentFormWidget(
+            onCreated: (id) {
+              context
+                  .read(feedPageNotifierProvider.notifier)
+                  .addNewPostToFeed(id);
+              _controller.animateTo(
+                0,
+                duration: const Duration(
+                  milliseconds: 400,
+                ),
+                curve: Curves.linear,
+              );
+            },
+          ),
+        );
+      },
+      child: Icon(Icons.add),
     );
   }
 }

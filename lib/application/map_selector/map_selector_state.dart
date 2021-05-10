@@ -30,10 +30,14 @@ class MapSelectorState extends Equatable {
     bool? loading,
     LatLng? markLocation,
     LatLng? userLocation,
-    MapSelectorFailure? userLocationFailure,
+    Either<Unit, MapSelectorFailure>? userLocationFailure,
   }) {
     return MapSelectorState(
-      userLocationFailure: userLocationFailure ?? this.userLocationFailure,
+      userLocationFailure: userLocationFailure?.fold(
+            (l) => null,
+            (r) => r,
+          ) ??
+          this.userLocationFailure,
       loading: loading ?? this.loading,
       markLocation: markLocation ?? this.markLocation,
       userLocation: userLocation ?? this.userLocation,

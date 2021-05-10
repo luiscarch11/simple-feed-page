@@ -13,11 +13,15 @@ showError(BuildContext context, String message) {
             Icons.error,
             color: FeedColors.error,
           ),
-          Text(
-            message,
-            style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                  color: FeedColors.light,
-                ),
+          Container(
+            width: 300,
+            child: Text(
+              message,
+              style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                    color: FeedColors.light,
+                  ),
+              maxLines: 2,
+            ),
           ),
           Container(),
         ],

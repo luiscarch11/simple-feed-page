@@ -117,7 +117,7 @@ void main() {
           initialState,
           initialState.copyWith(loading: true),
           initialState.copyWith(
-            userLocationFailure: failureToReturn,
+            userLocationFailure: right(failureToReturn),
           )
         ];
 
