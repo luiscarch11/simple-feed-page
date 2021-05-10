@@ -4,6 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
+**Please note that this project was developed using Android emulators for testing**
 This project was devoloped using Flutter V2.0.5 and Dart 2.12.3 (null safety).
 You'll need to install these versions to be able to execute the project.
 
